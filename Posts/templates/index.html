@@ -1,0 +1,49 @@
+{% extends 'posts/base.html'%} {% load bootstrap4 %} {% block content %} {{ block.super }}
+
+<div class="container-fluid topBuffer">
+    <div class="jumbotron bg-img">
+        <div class="row justify-content-around">
+
+            <!-- ============== start of about div ================== -->
+
+            <div class="col-xs-6 col-sm-7 col-md-7 col-lg-7">
+
+                <div class="card border-info slightOpaicty mb-3">
+                    <div class="card-header">Neighbourly </div>
+                    <div class="card-body">
+                        <h5 class="card-title">About us</h5>
+                        <p class="card-text"> Neighbourly enables our users to be kept in the loop about everything helpful that is happening in their neighborhood. From contact information of different handypersons to meeting-announcements or even alerts.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============== end of about div ================== -->
+
+
+            <!-- ============== start of resources-links div ================== -->
+            <div class="col-xs-6 col-sm-5 col-md-5 col-lg-5">
+                <div class="card border-info slightOpaicty">
+                    <div class="card-header"> Helpful Resources </div>
+                    <ul class="list-group text-info list-group-flush">
+                        <li class="list-group-item"> <a href="/neighborhoods"> Join a neighborhood</a></li>
+
+                        {% if request.user.profile.neighborhood %}
+                        <li class="list-group-item"> <a href="{% url 'view_notices' request.user.profile.neighborhood.id %}">View neighborhood notices</a></li>
+                        {% endif %}
+
+                        <li class="list-group-item"><a href="/businesses">View all neighborhoods' businesses</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ============== end of resources-links div ================== -->
+
+
+            <div>
+                <!-- end of row -->
+            </div>
+            <!-- jumbotron ends here -->
+        </div>
+        <!-- container ends here -->
+
+        {% endblock %}

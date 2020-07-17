@@ -1,0 +1,35 @@
+{% extends 'posts/base.html'%} {% load bootstrap4 %} {% load static %} {% block content %}
+
+<div class="container-fluid topBuffer">
+    <div class="jumbotron">
+        <div class="row justify-content-center">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <!--prof-pic column-->
+                {% if user.profile.prof_pic %}
+                <img class="card-img-top rounded-circle avatar" src="{{ request.user.profile.prof_pic}}" alt="Card image" style="width:200px; height:200px;"> {% else %}
+                <img class="card-img-top rounded-circle avatar" src="/static/images/nav.jpg" alt="Card image" style="width:200px; height:200px;"> {% endif %}
+            </div>
+            <!--end of prof pic columnn-->
+
+            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                <!-- PROFILE UPDATE FORM -->
+                <form enctype="multipart/form" action="{% url 'update_profile' %}" method="post">
+
+                    {% csrf_token %} {% bootstrap_form updateProf %}
+
+                    <div class="form-group">
+
+                        <input type="submit" class="btn btn-primary my-2" value="Submit">
+                    </div>
+                </form>
+                <!-- END OF FORM -->
+            </div>
+            <!-- end of column2 -->
+        </div>
+        <!-- end of outer row-->
+    </div>
+    <!-- end of jumbotron -->
+</div>
+<!-- end of outer container-->
+
+{% endblock %}

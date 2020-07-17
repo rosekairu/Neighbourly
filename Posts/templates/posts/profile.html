@@ -1,0 +1,67 @@
+{% extends 'posts/base.html'%} {% load bootstrap4 %} {% load static %} {% block content %}
+
+<div class="container topBuffer">
+    <div class="row">
+
+        <!-- profile card div -->
+        <div class="col-xs-4 col-sm-5 col-md-5 col-lg-4 scrollBioData">
+            <div class="card align-items-center text-center">
+
+                {% if user.profile.prof_pic %}
+
+                <img class="card-img-top rounded-circle avatar" src="{{ request.user.profile.prof_pic}}" alt="Card image" style="width:200px; height:200px;"> {% else %}
+                <img class="card-img-top rounded-circle avatar" src="/static/images/nav.jpg" alt="Card image" style="width:200px; height:200px;"> {% endif %}
+
+
+                <div class="card-body">
+                    <h4 class="card-title"> {{ request.user.username }}</h4>
+                    <p class="card-text"> Bio: {{ request.user.profile.bio }}</p>
+                    <p class="card-text"> Email: {{ request.user.email }}</p>
+                    <p class="card-text"> Current Location: {{ request.user.profile.neighborhood }}</p>
+                    <a href="/update-profile"> Edit Profile </a>
+                </div>
+            </div>
+        </div>
+        <!-- end of profile card div-->
+
+        <!-- user posts/posted notices div-->
+        {% if userNotices %}
+        <div class="col-xs-8 col-sm-7 col-md-7 col-lg-8 ml-auto">
+
+            <h4>Notices I have shared</h4>
+            {% for notice in userNotices %}
+
+            <div class="card border-info slightOpaicty mb-3">
+                <div class="card-header"> {{ notice.notice_title }} </div>
+
+                <div class="card-body row">
+
+                    <div class="col-sm-5">
+                        <img class="card-img-top" src="{{ notice.notice_pic.cdn_url }}" alt="Notice Image" style="max-height:250px; max-width:250px;">
+                    </div>
+                    <div class="col-sm-7 align-self-center">
+                        <p class="card-text"> {{ notice.notice_details }} </p>
+                        <p class="card-text"> Posted on: {{ notice.post_date }} <br> by: {{ notice.user }} </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        {% else %}
+        <div class="col-xs-8 col-sm-7 col-md-7 col-lg-8 align-self-center ml-auto">
+            <div class="card border-info slightOpaicty">
+                <div class="card-body"> You haven't posted any notices/alerts/announcements yet </div>
+            </div>
+        </div>
+        {% endif %}
+        <!-- end of user posts div -->
+
+
+    </div>
+    <!-- end of outer row-->
+</div>
+<!-- end of outer container-->
+
+{% endblock %}

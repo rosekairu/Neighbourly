@@ -1,0 +1,3 @@
+Hello {{name}}
+
+Welcome to Neighbourly, a Neighbourhood Watch app. You will find the most exciting news about your Neighbourhhod here.
