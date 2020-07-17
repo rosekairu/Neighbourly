@@ -11,7 +11,7 @@
             </li>
         </ul>
 
-        <form action="{% url 'search_businesses' %}" class="form-inline my-2 my-lg-0">
+        <form action="{% url 'Posts:search_businesses' %}" class="form-inline my-2 my-lg-0">
             <input class="form-control form-control-sm mr-sm-2" name="search" type="search" placeholder="Search for Businesses... &#xF002;" style="font-family:Arial, FontAwesome" aria-label="Search">
         </form>
 
@@ -37,9 +37,9 @@
                     <a class="dropdown-item" href="/businesses">Businesses</a>
                     <div class="dropdown-divider"></div>
                     {%if request.user.profile.neighborhood%}
-                    <a class="dropdown-item" href="{% url 'health_centers' request.user.profile.neighborhood.id%}">Health Centers</a>
+                    <a class="dropdown-item" href="{% url 'Posts:health_centers' request.user.profile.neighborhood.id%}">Health Centers</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'police_stations' request.user.profile.neighborhood.id %}">Police Contacts</a> {%endif%}
+                    <a class="dropdown-item" href="{% url 'Posts:police_stations' request.user.profile.neighborhood.id %}">Police Contacts</a> {%endif%}
                 </div>
             </li>
 
@@ -53,9 +53,9 @@
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
                     {% if request.user.profile.neighborhood %}
 
-                    <a class="dropdown-item" href="{% url 'view_notices' request.user.profile.neighborhood.id%}">View Notices</a>
+                    <a class="dropdown-item" href="{% url 'Posts:view_notices' request.user.profile.neighborhood.id%}">View Notices</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'share_notice' request.user.profile.neighborhood.id%}">Share Notice</a> {% endif %}
+                    <a class="dropdown-item" href="{% url 'Posts:share_notice' request.user.profile.neighborhood.id%}">Share Notice</a> {% endif %}
                 </div>
             </li>
 

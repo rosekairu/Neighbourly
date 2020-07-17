@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from phone_field import PhoneField
-from pyuploadcare.dj.models import ImageField
+from cloudinary.models import CloudinaryField
 import datetime as dt
 
 # Create your models here.
@@ -24,7 +24,7 @@ class Neighborhood(models.Model):
 
 #User/Profile Model
 class Profile(models.Model):
-    prof_pic = ImageField(blank=True, manual_crop="", null=True)
+    prof_pic = models.ImageField(upload_to='images/',blank=True, null=True)
     bio = models.CharField(max_length = 250, null=True)
     email = models.EmailField(max_length=100)
     neighborhood = models.ForeignKey(Neighborhood,on_delete=models.CASCADE, null=True, default=2)
@@ -75,7 +75,7 @@ class Business(models.Model):
 #Notices Model
 class Notice(models.Model):
     notice_title = models.CharField(max_length=100, null=True)
-    notice_pic = ImageField(blank=True, manual_crop="",null=True)
+    notice_pic = models.ImageField(upload_to='images/',blank=True, null=True)
     notice_details=models.CharField(max_length=250, null=True)
     post_date=models.DateField(auto_now_add=True, null=True)
     user=models.ForeignKey(User,on_delete=models.CASCADE, null=True)
