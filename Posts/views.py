@@ -78,7 +78,7 @@ def joinNeighborhood(request, neighborhood_id):
     joinForm = JoinNeighborhoodForm()
     
     if request.method == 'POST':
-        joinForm = JoinNeighborhoodForm(request.POST,request.FILES, instance=request.user.profile)
+        joinForm = JoinNeighborhoodForm(request.POST, request.FILES, instance=request.user.profile)
         neighborhood = get_object_or_404(Neighborhood,pk=neighborhood_id)
         if joinForm.is_valid():
             new_occupant = joinForm.save(commit=False)
