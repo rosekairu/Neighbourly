@@ -1,1 +1,1 @@
-web: gunicorn Awwwards.wsgi --log-file -
+web: gunicorn Neighbourly.wsgi --log-file -
