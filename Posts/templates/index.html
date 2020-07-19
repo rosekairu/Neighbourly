@@ -25,10 +25,10 @@
                 <div class="card border-info slightOpaicty">
                     <div class="card-header"> Helpful Resources </div>
                     <ul class="list-group text-info list-group-flush">
-                        <li class="list-group-item"> <a href="/neighborhoods"> Join a neighborhood</a></li>
+                        <li class="list-group-item"> <a href="/neighborhoods"> Join a Neighborhood</a></li>
 
                         {% if request.user.profile.neighborhood %}
-                        <li class="list-group-item"> <a href="{% url 'view_notices' request.user.profile.neighborhood.id %}">View neighborhood notices</a></li>
+                        <li class="list-group-item"> <a href="{% url 'Posts:view_notices' request.user.profile.neighborhood.id %}">View neighborhood notices</a></li>
                         {% endif %}
 
                         <li class="list-group-item"><a href="/businesses">View all neighborhoods' businesses</a></li>
@@ -38,12 +38,32 @@
 
             <!-- ============== end of resources-links div ================== -->
 
-
             <div>
-                <!-- end of row -->
+
             </div>
+
             <!-- jumbotron ends here -->
         </div>
         <!-- container ends here -->
+    </div>
+    <div class="col-md-12">
+        <div class=" footer text-center ">
+            <ul id="footer1 ">
+                <li><a href="admin "> ADMIN </a> </li>
+                <li><a href="# ">ABOUT US</a> </li>
+                <li><a href="# ">SUPPORT</a></li>
+                <li><a href="# ">PRESS</a></li>
+                <li><a href="# ">API</a></li>
+                <li><a href="# ">JOBS</a></li>
+                <li><a href="# ">PRIVACY</a></li>
+                <li><a href="# ">TERMS</a></li>
+                <li><a href="# ">DIRECTORY</a></li>
+                <li><a href="# ">COMMUNITY RULES </a></li>
+                <br>
+                <li style="font-size:10px; "> <strong>© 2020 ROSE KAIRU</strong></li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-        {% endblock %}
+{% endblock %}

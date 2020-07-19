@@ -1,5 +1,5 @@
 from django import forms
-from .models import *
+from .models import Neighborhood,Profile,Business,Notice,HealthCenter,Police
 from cloudinary.models import CloudinaryField
 
 class CreateHoodForm(forms.ModelForm):

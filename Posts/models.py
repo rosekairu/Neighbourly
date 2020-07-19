@@ -1,7 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.db.models.signals import post_save
-from django.dispatch import receiver
 from phone_field import PhoneField
 from cloudinary.models import CloudinaryField
 import datetime as dt
@@ -24,11 +22,12 @@ class Neighborhood(models.Model):
 
 #User/Profile Model
 class Profile(models.Model):
-    prof_pic = models.ImageField(upload_to='images/',blank=True, null=True)
+    prof_pic = models.ImageField(upload_to='images/',blank=True)
     bio = models.CharField(max_length = 250, null=True)
     email = models.EmailField(max_length=100)
     neighborhood = models.ForeignKey(Neighborhood,on_delete=models.CASCADE, null=True, default=2)
     user = models.OneToOneField('auth.User',on_delete=models.CASCADE)
+    date_joined = models.DateTimeField(auto_now_add=True)
     
     def __str__(self):
         return str(self.user)
@@ -40,15 +39,6 @@ class Profile(models.Model):
     def profile(cls):
         profile = cls.objects.filter(id=Profile.id)
         return profile
-
-@receiver(post_save,sender=User)
-def create_profile(sender, instance,created,**kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-    
-@receiver(post_save,sender=User)
-def save_profile(sender, instance,**kwargs):
-    instance.profile.save()
 
 
 #Business Model
@@ -95,9 +85,7 @@ class HealthCenter(models.Model):
     email = models.EmailField(max_length=100)
     tel = PhoneField(blank=True, help_text="Hospital Phone Number")
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
-
-    
-    
+  
     def __str__(self):
         return str(self.hospital_name)
     
@@ -111,8 +99,6 @@ class Police(models.Model):
     tel = PhoneField(blank=True, help_text="Police Station Phone Number")
     neighborhood = models.ForeignKey(Neighborhood, on_delete=models.CASCADE)
 
-    
-    
     def __str__(self):
         return str(self.station_name)
     

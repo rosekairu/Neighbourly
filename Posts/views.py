@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import *
-from .forms import *
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from .models import Neighborhood,Profile,Business,Notice,HealthCenter,Police
+from .forms import CreateHoodForm,UpdateProfileForm,SubmitBusinessForm,ShareNoticeForm,AddBusinessForm,AddNeighborhoodForm,JoinNeighborhoodForm
+
 
 
 
@@ -26,7 +27,7 @@ def myProfile(request):
 #updateProfile
 def updateProfile(request):
     my_prof = Profile.objects.get(user=request.user)
-        
+ 
     if request.method == 'POST':
         updateProf = UpdateProfileForm(request.POST,request.FILES,instance=request.user.profile)
 
@@ -86,7 +87,6 @@ def joinNeighborhood(request, neighborhood_id):
         return redirect('view_notices', neighborhood_id)
 
 
-
 #share a notice
 @login_required(login_url='/accounts/login')
 def shareNotice(request, neighborhood_id):
@@ -115,7 +115,6 @@ def viewNotices(request, neighborhood_id):
     print(notices, "=====ALL NOTICES======")
     print(notices, "======RESPECTIVE HOOD NOTICES=====")
 
-    
     return render(request,'posts/notices.html', locals())
 
 

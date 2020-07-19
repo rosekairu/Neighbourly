@@ -3,9 +3,8 @@
 }
 
 .bg-img {
-    background-image: url("/static/images/suburbs4.jpg");
-    opacity: 0.7;
-    height: 100%;
+    background-image: url("/static/images/home.png");
+    height: 150%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -40,6 +39,19 @@ form .form-text {
 .scrollBioData,
 .scrollResources {
     position: inherit;
+}
+
+li {
+    display: inline;
+}
+
+li a {
+    padding: 20px;
+}
+
+#footer1 li {
+    padding: 10px;
+    font-size: 10px;
 }
 
 @media only screen and (min-device-width: 678px) {

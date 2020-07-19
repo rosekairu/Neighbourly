@@ -1,5 +1,5 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="/"> <img src="/static/images/nav.jpg" style="width:10vh; height:10vh;" alt="logo"> | </a>
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand" href="/"> <img src="/static/images/nav.jpg" style="width:25vh; height:10vh;" alt="logo"> | </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/"> Neighbourly <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/" style="color: whitesmoke;"> Neighbourly <span class="sr-only">(current)</span></a>
             </li>
         </ul>
 
@@ -22,15 +22,15 @@
             {% if user.is_authenticated %}
 
             <li class="nav-item">
-                <a class="nav-link" href="/my-profile"> {{request.user.username}} <i class="fa fa-user-circle-o" style="font-size:20px"></i> </a>
+                <a class="nav-link" href="/my-profile" style="color: gold;"> {{request.user.username}} <i class="fa fa-user-circle-o" style="font-size:20px"></i> </a>
             </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="/accounts/login">Reg/Login | </a>
+                <a class="nav-link" href="/accounts/login" style="color: goldenrod;">Register/Login | </a>
             </li>
             {% endif %}
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: chartreuse;">
             Resources
           </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -46,7 +46,7 @@
             {% if user.is_authenticated %}
 
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: yellowgreen;">
                 NoticeBoard
               </a>
 
@@ -59,12 +59,12 @@
                 </div>
             </li>
 
+            <li>
+                <a class="nav-link" href="/logout"> | <i class="fa fa-sign-out" style="font-size:20px;color: whitesmoke;" ></i> </i></a>
+            </li>
+
             {% endif %}
 
-
-            <li>
-                <a class="nav-link" href="/logout"> | <i class="fa fa-sign-out" style="font-size:20px"></i> </i></a>
-            </li>
         </ul>
 
     </div>
