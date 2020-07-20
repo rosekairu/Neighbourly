@@ -36,7 +36,7 @@ def updateProfile(request):
               
         return redirect('Posts:my_profile')
     else:
-        updateProf = UpdateProfileForm(instance=request.user.profile)
+        updateProf = UpdateProfileForm()
     
     return render(request, 'posts/update_profile.html', locals())
 
@@ -65,7 +65,7 @@ def addNeighborhood (request):
             neighborhood = form.save(commit=False)
             neighborhood.user = request.user
             neighborhood.save()
-        return redirect('Posts:view_neighborhoods')
+        return redirect('view_neighborhoods')
     else:
         form = AddNeighborhoodForm()
         joinForm = JoinNeighborhoodForm(instance=request.user.profile)
@@ -78,13 +78,13 @@ def joinNeighborhood(request, neighborhood_id):
     joinForm = JoinNeighborhoodForm()
     
     if request.method == 'POST':
-        joinForm = JoinNeighborhoodForm(request.POST, request.FILES, instance=request.user.profile)
+        joinForm = JoinNeighborhoodForm(request.POST,request.FILES, instance=request.user.profile)
         neighborhood = get_object_or_404(Neighborhood,pk=neighborhood_id)
         if joinForm.is_valid():
             new_occupant = joinForm.save(commit=False)
             new_occupant.user = request.user
             new_occupant.save()
-        return redirect('Posts:view_notices', neighborhood_id)
+        return redirect('view_notices', neighborhood_id)
 
 
 #share a notice
