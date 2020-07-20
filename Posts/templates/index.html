@@ -25,7 +25,7 @@
                 <div class="card border-info slightOpaicty">
                     <div class="card-header"> Helpful Resources </div>
                     <ul class="list-group text-info list-group-flush">
-                        <li class="list-group-item"><a href="/neighborhood"> Join a Neighborhood</a></li>
+                        <li class="list-group-item"><a href="/neighborhoods"> Join a Neighborhood</a></li>
 
                         {% if request.user.profile.neighborhood %}
                         <li class="list-group-item"><a href="{% url 'Posts:view_notices' request.user.profile.neighborhood.id %}">View Neighborhood Notices</a></li>

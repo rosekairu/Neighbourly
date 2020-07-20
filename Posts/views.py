@@ -65,7 +65,7 @@ def addNeighborhood (request):
             neighborhood = form.save(commit=False)
             neighborhood.user = request.user
             neighborhood.save()
-        return redirect('view_neighborhoods')
+        return redirect('Posts:view_neighborhoods')
     else:
         form = AddNeighborhoodForm()
         joinForm = JoinNeighborhoodForm(instance=request.user.profile)
@@ -84,7 +84,7 @@ def joinNeighborhood(request, neighborhood_id):
             new_occupant = joinForm.save(commit=False)
             new_occupant.user = request.user
             new_occupant.save()
-        return redirect('view_notices', neighborhood_id)
+        return redirect('Posts:view_notices', neighborhood_id)
 
 
 #share a notice
