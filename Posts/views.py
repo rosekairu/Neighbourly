@@ -26,13 +26,15 @@ def myProfile(request):
 
 #updateProfile
 def updateProfile(request):
-    my_prof = Profile.objects.get(user=request.user)
+    my_prof = User.objects.get(username=request.user)
  
     if request.method == 'POST':
-        updateProf = UpdateProfileForm(request.POST,request.FILES,instance=request.user.profile)
+        updateProf = UpdateProfileForm(request.POST,request.FILES)
 
         if updateProf.is_valid():
-            updateProf.save()
+            updateProfile = updateProf.save(commit=False)
+            updateProfile.user = request.user
+            updateProfile.save()
               
         return redirect('Posts:my_profile')
     else:

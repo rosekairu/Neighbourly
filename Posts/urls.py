@@ -1,6 +1,8 @@
 from . import  views
 from django.urls import path
 
+app_name = 'Posts'
+
 urlpatterns = [
     path('',views.index,name='index'),
     path('my-profile/',views.myProfile,name='my_profile'),
