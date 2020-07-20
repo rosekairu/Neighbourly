@@ -25,13 +25,13 @@
                 <div class="card border-info slightOpaicty">
                     <div class="card-header"> Helpful Resources </div>
                     <ul class="list-group text-info list-group-flush">
-                        <li class="list-group-item"><a href="/neighborhoods"> Join a neighborhood</a></li>
+                        <li class="list-group-item"><a href="/join_neighborhood"> Join a Neighborhood</a></li>
 
-                        {% if request.user.profile.neighborhood %}
-                        <li class="list-group-item"><a href="{% url 'Posts:view_notices' request.user.profile.neighborhood.id %}">View neighborhood notices</a></li>
+                        {% if request.user.Profile.neighborhood %}
+                        <li class="list-group-item"><a href="{% url 'Posts:view_notices' request.user.profile.neighborhood.id %}">View Neighborhood Notices</a></li>
                         {% endif %}
 
-                        <li class="list-group-item"><a href="/businesses">View all neighborhoods' businesses</a></li>
+                        <li class="list-group-item"><a href="/businesses">View all Neighborhoods' Businesses</a></li>
                     </ul>
                 </div>
             </div>

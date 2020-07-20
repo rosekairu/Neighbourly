@@ -45,8 +45,8 @@
                     <div class="card-header"> Helpful Resources </div>
                     <ul class="list-group text-info list-group-flush">
                         <li class="list-group-item"> <a href="/businesses"> Businesses </a> </li>
-                        {% if request.user.profile.neighborhood %}
 
+                        {% if request.user.profile.neighborhood %}
                         <li class="list-group-item"> <a href="{% url 'Posts:health_centers' request.user.profile.neighborhood.id%}"> Health Centers </a> </li>
                         <li class="list-group-item"> <a href="{% url 'Posts:police_stations' request.user.profile.neighborhood.id %}"> Authorities: Police Contacts </a> </li>
                         {% endif %}
@@ -56,12 +56,10 @@
 
             <!-- ============== end of resources-links div ================== -->
 
-
         </div>
-        <!-- end of row -->
+
     </div>
-    <!-- jumbotron ends here -->
+
 </div>
-<!-- container ends here -->
 
 {% endblock %}
