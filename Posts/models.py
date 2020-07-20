@@ -4,6 +4,7 @@ from phone_field import PhoneField
 from cloudinary.models import CloudinaryField
 import datetime as dt
 
+
 # Create your models here.
 #Neighborhood Model
 class Neighborhood(models.Model):
