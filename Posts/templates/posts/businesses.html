@@ -9,7 +9,7 @@
                 <div class="card border-info slightOpaicty">
                     <div class="card-header"> {{ business.bsns_name }} </div>
                     <ul class="list-group text-info list-group-flush">
-                        <li class="list-group-item"> Hood: {{ business.neighborhood }} </li>
+                        <li class="list-group-item"> Hood: {{ request.user.profile.neighborhood }} </li>
                         <li class="list-group-item"> Business Email: {{ business.bsns_email }} </li>
                         <li class="list-group-item"> Contact Person: {{ business.user }} </li>
                     </ul>

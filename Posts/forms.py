@@ -29,7 +29,7 @@ class ShareNoticeForm(forms.ModelForm):
 class AddBusinessForm(forms.ModelForm):
     class Meta:
         model = Business
-        exclude = ['user']
+        exclude = ['user', 'neighborhood']
         
         
 class AddNeighborhoodForm(forms.ModelForm):
