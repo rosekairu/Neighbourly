@@ -34,7 +34,7 @@ def updateProfile(request):
         if updateProf.is_valid():
             updateProfile = updateProf.save(commit=False)
             updateProfile.user = request.user
-            updateProfile.save()
+            updateProf.save()
               
         return redirect('Posts:my_profile')
     else:
