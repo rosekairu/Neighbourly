@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from .models import Neighborhood,Profile,Business,Notice,HealthCenter,Police
 from .forms import CreateHoodForm,UpdateProfileForm,SubmitBusinessForm,ShareNoticeForm,AddBusinessForm,AddNeighborhoodForm,JoinNeighborhoodForm
-
+from .email import send_welcome_email
 
 
 
@@ -17,9 +17,17 @@ def index(request):
 
 #profilePage
 def myProfile(request):
-    userProfile = Profile.objects.all()
-    userNotices = Notice.objects.filter(user=request.user)
-    notices=Notice.objects.all()
+    current_user = request.user
+
+    if Profile.objects.filter(user=current_user).first():
+        userProfile = Profile.objects.all()
+        userNotices = Notice.objects.filter(user=request.user)
+        notices=Notice.objects.all()
+        profile = Profile.objects.filter(user=current_user).first()
+    else:
+        profile = Profile(user=current_user)
+        profile.save()
+        send_welcome_email(current_user.username, current_user.email)
 
     return render(request, 'posts/profile.html', locals())
 
@@ -27,7 +35,8 @@ def myProfile(request):
 #updateProfile
 def updateProfile(request):
     my_prof = User.objects.get(username=request.user)
- 
+    current_user = request.user
+
     if request.method == 'POST':
         updateProf = UpdateProfileForm(request.POST,request.FILES)
 
@@ -35,6 +44,7 @@ def updateProfile(request):
             updateProfile = updateProf.save(commit=False)
             updateProfile.user = request.user
             updateProf.save()
+            send_welcome_email(current_user.username, current_user.email)
               
         return redirect('Posts:my_profile')
     else:
