@@ -1,6 +1,6 @@
 ## Neighbourly
 
-
+[![codebeat badge](https://codebeat.co/badges/78d76d56-7f81-4d1c-98a9-95616009889b)](https://codebeat.co/projects/github-com-rosekairu-neighbourly-master)
 
 ### Author: [rosekairu](https://github.com/rosekairu)
 
