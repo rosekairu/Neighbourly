@@ -29,6 +29,7 @@ def myProfile(request):
         profile.save()
         send_welcome_email(current_user.username, current_user.email)
 
+
     return render(request, 'posts/profile.html', locals())
 
 
@@ -112,6 +113,7 @@ def shareNotice(request, neighborhood_id):
             announcement = form.save(commit=False)
             announcement.user = request.user
             announcement.save()
+
         return redirect('Posts:view_notices', neighborhood_id)
     else:
         form = ShareNoticeForm()
